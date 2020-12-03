@@ -6,4 +6,8 @@ class quanli_controller extends base_controller
     function __construct() {
         $this->name = 'quanli';
     }
+
+    public function index() {
+        $this->process('nhanvien',array());
+    }
 }
