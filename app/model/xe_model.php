@@ -111,6 +111,22 @@ class xe_model
         return null;
     }
 
+    public static function update_xe_soluongkho($maxe, $soluongkho){
+        $sql = 'UPDATE xe set soluongkho= soluongkho+? where maxe = ?';
+        $db = DB::getDB();
+        $stm = $db->prepare($sql);
+        if ($stm === False){
+            return array('code' => 4, 'error' => 'something wrong');
+        }
+        $stm->bind_param('is',$soluongkho, $maxe);
+        $status = $stm->execute();
+        if($status) {
+            return 0;
+        }
+        $stm->close();
+        return null;
+    }
+
     public static function search_xe_by_tenxe($tenxe){
         $sql = "select * from xe where tenxe like concat('%', ?, '%')";
         $db = DB::getDB();

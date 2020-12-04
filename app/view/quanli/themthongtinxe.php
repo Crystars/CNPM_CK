@@ -1,5 +1,15 @@
 <?php
 require_once ("app/controller/quanli_controller.php");
+
+if (!isset($_SESSION['username'])){
+    redirect('index.php?controller=login&action=logout');
+}
+$id= $_SESSION['username'];
+$this_user = quanli_controller::get_user_by_id($id);
+if ($this_user['chucvu']!='quanli') {
+    redirect('index.php?controller=login&action=logout');
+}
+
 $action = 'Thêm';
 $READ = "";
 $error = '';
@@ -30,6 +40,8 @@ if (isset($_GET['data'])){
             $action = "Sửa";
         }
     }
+}else {
+    redirect('index.php?controller=login&action=logout');
 }
 
 if (isset($_POST['maxe']) && isset($_POST['tenxe']) && isset($_POST['mota'])

@@ -1,12 +1,12 @@
 <?php
-require_once ("app/controller/quanli_controller.php");
+require_once ("app/controller/kho_controller.php");
 
 if (!isset($_SESSION['username'])){
     redirect('index.php?controller=login&action=logout');
 }
 $id= $_SESSION['username'];
 $this_user = quanli_controller::get_user_by_id($id);
-if ($this_user['chucvu']!='quanli') {
+if ($this_user['chucvu']!='kho') {
     redirect('index.php?controller=login&action=logout');
 }
 $action = 'Thêm';
@@ -137,7 +137,7 @@ if (isset($_POST['maNCC']) && isset($_POST['tenNCC']) && isset($_POST['phone'])
                     ?>
                     <button type="submit" class="btn btn-success  mt-3 mr-2"><?= $action ?></button>
                     <button type="reset" class="btn btn-outline-success  mt-3">Reset</button>
-                    <a class="btn btn-info" class="xx-large"  href="/index.php?controller=quanli&action=nhacungcap">Quản lí nhà cung cấp</a>
+                    <a class="btn btn-info" class="xx-large"  href="/index.php?controller=kho&action=nhacungcap">Quản lí nhà cung cấp</a>
                 </div>
             </form>
 

@@ -48,11 +48,11 @@ class quanli_controller extends base_controller
     }
 
     public function kho() {
-        $this->process('kho',array());
+        $this->process('phieunhaphang',array());
     }
 
     public function them_kho($id) {
-        $this->process('themkho',array($id));
+        $this->process('themphieunhaphang',array($id));
     }
 
     public static function get_all_users() {
@@ -117,5 +117,21 @@ class quanli_controller extends base_controller
 
     public static function search_xe_by_tenxe($tenxe) {
         return xe_model::search_xe_by_tenxe($tenxe);
+    }
+
+    public static function get_all_phieunhaphang() {
+        return phieunhaphang_model::get_all_phieunhaphang();
+    }
+
+    public static function get_phieunhaphang_by_id($maPhieuNH){
+        return phieunhaphang_model::get_phieunhaphang_by_id($maPhieuNH);
+    }
+
+    public static function add_phieunhaphang($ngayNhap, $nvLap, $maNCC, $maxe, $soluong, $dongia, $thue, $state = 0){
+        return phieunhaphang_model::add_phieunhaphang($ngayNhap, $nvLap, $maNCC, $maxe, $soluong, $dongia, $thue, $state);
+    }
+
+    public static function update_phieunhaphang($maPhieuNH, $ngayNhap, $nvLap, $maNCC, $maxe, $soluong, $dongia, $thue, $state = 1){
+        return phieunhaphang_model::update_phieunhaphang($maPhieuNH, $ngayNhap, $nvLap, $maNCC, $maxe, $soluong, $dongia, $thue, $state);
     }
 }

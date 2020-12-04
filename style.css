@@ -425,3 +425,7 @@ tr.header{
 .main_background{
     background-color: aquamarine;
 }
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
