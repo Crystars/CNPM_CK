@@ -381,6 +381,7 @@ tr.header{
         margin-top: 0;
     }
 }
+
 .h50 {
     height: 50px;
 }
@@ -413,6 +414,11 @@ tr.header{
 
 .xx-large {
     font-size: xx-large;
+    color: black;
+}
+
+.x-large {
+    font-size: x-large;
     color: black;
 }
 

@@ -15,6 +15,46 @@ class quanli_controller extends base_controller
         $this->process('themnhanvien',array($id));
     }
 
+    public function thongtinxe() {
+        $this->process('thongtinxe',array());
+    }
+
+    public function them_thongtinxe($id) {
+        $this->process('themthongtinxe',array($id));
+    }
+
+    public function nhacungcap() {
+        $this->process('nhacungcap',array());
+    }
+
+    public function them_nhacungcap($id) {
+        $this->process('themnhacungcap',array($id));
+    }
+
+    public function thuchi() {
+        $this->process('thuchi',array());
+    }
+
+    public function them_thuchi($id) {
+        $this->process('themthuchi',array($id));
+    }
+
+    public function banhang() {
+        $this->process('banhang',array());
+    }
+
+    public function them_banhang($id) {
+        $this->process('thembanhang',array($id));
+    }
+
+    public function kho() {
+        $this->process('kho',array());
+    }
+
+    public function them_kho($id) {
+        $this->process('themkho',array($id));
+    }
+
     public static function get_all_users() {
         return user_model::get_all_users();
     }
@@ -33,5 +73,49 @@ class quanli_controller extends base_controller
 
     public static function update_user($id, $name, $gender, $address, $phone, $chucvu, $luongcb){
         return user_model::update_user($id, $name, $gender, $address, $phone, $chucvu, $luongcb);
+    }
+
+    public static function get_all_nhacungcap() {
+        return nhacungcap_model::get_all_nhacungcap();
+    }
+
+    public static function get_nhacungcap_by_id($id){
+        return nhacungcap_model::get_nhacungcap_by_id($id);
+    }
+
+    public static function set_nhacungcap_state_by_id($id){
+        return nhacungcap_model::set_nhacungcap_state_by_id($id);
+    }
+
+    public static function add_nhacungcap($maNCC,$tenNCC,$sdt,$diachi, $state = 1){
+        return nhacungcap_model::add_nhacungcap($maNCC,$tenNCC,$sdt,$diachi,$state);
+    }
+
+    public static function update_nhacungcap($maNCC, $tenNCC, $sdt, $diachi){
+        return nhacungcap_model::update_nhacungcap($maNCC, $tenNCC, $sdt, $diachi);
+    }
+
+    public static function get_all_xe() {
+        return xe_model::get_all_xe();
+    }
+
+    public static function get_xe_by_id($maxe){
+        return xe_model::get_xe_by_id($maxe);
+    }
+
+    public static function set_xe_state_by_id($maxe, $state = 0){
+        return xe_model::set_xe_state_by_id($maxe, $state);
+    }
+
+    public static function add_xe($maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $state = 1){
+        return xe_model::add_xe($maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $state );
+    }
+
+    public static function update_xe($maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia){
+        return xe_model::update_xe($maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia);
+    }
+
+    public static function search_xe_by_tenxe($tenxe) {
+        return xe_model::search_xe_by_tenxe($tenxe);
     }
 }

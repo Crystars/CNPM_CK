@@ -10,13 +10,13 @@ if ($this_user['chucvu']!='quanli') {
 }
 
 if (isset($_POST['id_delete'])){
-    quanli_controller::set_state_by_id($_POST['id_delete']);
+    quanli_controller::set_nhacungcap_state_by_id($_POST['id_delete']);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Danh sách nhân viên</title>
+    <title>Danh sách Nhà cung cấp</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -32,12 +32,12 @@ if (isset($_POST['id_delete'])){
 <nav id="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li><a class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí nhân viên</a></li>
-            <li><a class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí bán hàng</a></li>
-            <li><a class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí nhà cung cấp</a></li>
-            <li><a class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí thông tin xe</a></li>
-            <li><a class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí thu chi</a></li>
-
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=index">Quản lí nhân viên</a></li>
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=banhang">Quản lí bán hàng</a></li>
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=nhacungcap">Quản lí nhà cung cấp</a></li>
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=thongtinxe">Quản lí thông tin xe</a></li>
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=thuchi">Quản lí thu chi</a></li>
+            <li><a class="x-large"  href="/index.php?controller=quanli&action=kho">Quản lí kho</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -47,7 +47,7 @@ if (isset($_POST['id_delete'])){
     </div>
 </nav>
 
-<h2 class="text-center">Danh sách người dùng</h2>
+<h2 class="text-center">Danh sách Nhà cung cấp</h2>
 
 <div id="responsive_table">
     <table id="table_list">
@@ -55,59 +55,44 @@ if (isset($_POST['id_delete'])){
         <table id="table_list"">
         <tr class="control">
             <td colspan="7">
-                <a href="/index.php?controller=quanli&action=them_user&data=-1" class="btn btn-success">Thêm nhân viên</a></button>
-                <button class="btn btn-warning" data-toggle="modal" data-target="#delete_user">Xóa nhân viên</a></button>
+                <a href="/index.php?controller=quanli&action=them_nhacungcap&data=-1" class="btn btn-success">Thêm Nhà cung cấp</a></button>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#delete_user">Xóa Nhà cung cấp</a></button>
             </td>
         </tr>
 
         <tr class="header">
-            <td>Họ và tên</td>
-            <td>Giới tính</td>
-            <td>Ngày sinh</td>
-            <td>Địa chỉ</td>
+            <td>Mã nhà cung cấp</td>
+            <td>Tên nhà cung cấp</td>
             <td>Số điện thoại</td>
-            <td>Chức vụ</td>
-            <td>Lương cơ bản</td>
+            <td>Địa chỉ</td>
         </tr>
         <?php
-        $data = quanli_controller::get_all_users();
+        $data = quanli_controller::get_all_nhacungcap();
 
-        $id = '';
-        $name = '';
-        $gender = '';
-        $birth = '';
-        $address = '';
+        $maNCC = '';
+        $tenNCC = '';
         $sdt = '';
-        $chucvu = '';
-        $luongcb = '';
+        $diachi = '';
 
         $total = 0;
         foreach ($data as $row) {
-            if ($row['id'] === $_SESSION['username'] or $row['state']===0) {
+            if ($row['state']===0) {
                 continue;
             }
             else {
-                $id = $row['id'];
-                $name = $row['ten'];
-                $gender = $row['gioitinh'];
-                $birth = $row['namsinh'];
-                $address = $row['diachi'];
+                $maNCC = $row['maNCC'];
+                $tenNCC = $row['tenNCC'];
                 $sdt = $row['sdt'];
-                $chucvu = $row['chucvu'];
-                $luongcb = $row['luongcb'];
+                $diachi = $row['diachi'];
             }
             $total += 1;
             ?>
             <tr class="item">
-                <td><?= $id ?> </td>
-                <td><?= $name ?> </td>
-                <td><?= $gender ?> </td>
-                <td><?= $birth ?> </td>
-                <td><?= $address ?> </td>
+                <td><?= $maNCC ?> </td>
+                <td><?= $tenNCC ?> </td>
                 <td><?= $sdt ?> </td>
-                <td><?= $chucvu ?> </td>
-                <td><?= $luongcb ?> </td>
-                <td><a href="/index.php?controller=quanli&action=them_user&data=<?=$row['id']?>" class="btn btn-info" >Sửa</a></td>
+                <td><?= $diachi ?> </td>
+                <td><a href="/index.php?controller=quanli&action=them_nhacungcap&data=<?=$maNCC?>" class="btn btn-info" >Sửa</a></td>
             </tr>
             <?php
         }
@@ -134,23 +119,21 @@ if (isset($_POST['id_delete'])){
                 <div class="modal-body h50">
                     <select class="select col-xs-12 col-sm-12 col-md-12 col-lg-12" name="id_delete">
                         <?php
-                        $name = '';
-                        $id = '';
-                        $gender = '';
+                        $maNCC = '';
+                        $tenNCC = '';
                         $sdt = '';
-                        $chucvu = '';
+                        $diachi = '';
                         foreach($data as $row){
                             if ($row['id'] === $_SESSION['username']) {
                                 continue;
                             }
-                            $name = $row['ten'];;
-                            $id = $row['id'];
-                            $gender = $row['gioitinh'];
+                            $maNCC = $row['maNCC'];
+                            $tenNCC = $row['tenNCC'];
                             $sdt = $row['sdt'];
-                            $chucvu = $row['chucvu'];
+                            $diachi = $row['diachi'];
                             ?>
-                            <option value="<?= $id ?>">Tên: <?= $name ?> &nbsp; Chức vụ: <?= $chucvu ?>
-                                &nbsp;Giới tính : <?= $gender ?> &nbsp;Số điện thoại : <?= $sdt ?>
+                            <option value="<?= $maNCC ?>">Mã: <?= $maNCC ?> &nbsp; Tên: <?= $tenNCC ?>
+                                &nbsp;Số điện thoại : <?= $sdt ?> &nbsp;Địa chỉ : <?= $diachi ?>
                             </option>
                             <?php
                         }
