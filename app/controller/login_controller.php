@@ -13,6 +13,10 @@ class login_controller extends base_controller
         $this->process('login', array());
     }
 
+    function logout(){
+        $this->process('logout', array());
+    }
+
     public static function login($user,$pass){
         return user_model::login($user,$pass);
     }

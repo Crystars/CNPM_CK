@@ -2,12 +2,6 @@
     box-sizing: border-box;
 }
 
-.main_background {
-    background-image: url("images/main_background.jpg");
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .sua_lop_hoc {
     background-color: white;
@@ -35,9 +29,10 @@
 #navbar{
     border-radius: 0;
     padding: 20px;
-    background: #ffeaea;
-    border-bottom: 2px solid #fc9797;
+    background: bisque;
+    border-bottom: 2px solid cyan;
 }
+
 
 #classroom {
     font-size: xx-large;
@@ -408,4 +403,19 @@ tr.header{
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
+}
+
+.select_option90{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 90%;
+}
+
+.xx-large {
+    font-size: xx-large;
+    color: black;
+}
+
+.main_background{
+    background-color: aquamarine;
 }
