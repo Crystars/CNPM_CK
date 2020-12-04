@@ -13,7 +13,7 @@ class login_controller extends base_controller
         $this->process('login', array());
     }
 
-    function logout(){
+    function logout() {
         $this->process('logout', array());
     }
 
