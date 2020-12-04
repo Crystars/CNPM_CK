@@ -175,7 +175,7 @@ class xe_model
 
     public static function update_xe_soluongkho($maxe, $soluongkho)
     {
-        $sql = 'UPDATE xe set soluongkho= soluongkho+? where maxe = ?';
+        $sql = 'UPDATE xe set soluongkho = soluongkho+? where maxe = ?';
         $db = DB::getDB();
         $stm = $db->prepare($sql);
         if ($stm === False) {

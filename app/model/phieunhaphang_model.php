@@ -120,7 +120,7 @@ class phieunhaphang_model
         if ($stm === False){
             return array('code' => 4, 'error' => 'something wrong');
         }
-        $stm->bind_param('ssssiiiii',$ngayNhap,$nvLap,$maNCC, $maxe, $soluong, $dongia, $thue, $state, $maPhieuNH);
+        $stm->bind_param('ssssiisii',$ngayNhap,$nvLap,$maNCC, $maxe, $soluong, $dongia, $thue, $state, $maPhieuNH);
         $status = $stm->execute();
         if($status) {
             if (xe_model::update_xe_soluongkho($maxe, $soluong)===0){
