@@ -32,8 +32,8 @@
 
     $error = '';
     $ngayxuatDH = '';
-    $tenNCC = '';
-    $tenXe = '';
+    $maNCC = '';
+    $maxe = '';
     $soLuongXe = '';
     $dongia = '';
     $thue = '';
@@ -43,19 +43,19 @@
         $data = $banhang_controller->get_order_by_maDH($maDH);
         foreach ($data as $row) {
             $ngayxuatDH = $row['ngayxuatDH'];
-            $tenNCC = $row['tenNCC'];
-            $tenXe = $row['tenXe'];
+            $maNCC = $row['maNCC'];
+            $maxe = $row['maxe'];
             $soLuongXe = $row['soLuongXe'];
             $dongia = $row['dongia'];
             $thue = $row['thue'];
         }
     }
 
-    if (isset($_POST['ngayxuatDH']) && isset($_POST['tenNCC']) && isset($_POST['tenXe']) && isset($_POST['soLuongXe']) && isset($_POST['dongia']) && isset($_POST['thue']))
+    if (isset($_POST['ngayxuatDH']) && isset($_POST['maNCC']) && isset($_POST['maxe']) && isset($_POST['soLuongXe']) && isset($_POST['dongia']) && isset($_POST['thue']))
     {
         $ngayxuatDH = $_POST['ngayxuatDH'];
-        $tenNCC = $_POST['tenNCC'];
-        $tenXe = $_POST['tenXe'];
+        $maNCC = $_POST['maNCC'];
+        $maxe = $_POST['maxe'];
         $soLuongXe = $_POST['soLuongXe'];
         $dongia = $_POST['dongia'];
         $thue = $_POST['thue'];
@@ -63,11 +63,11 @@
         if (empty($ngayxuatDH)) {
             $error = 'Vui lòng nhập ngày xuất';
         }
-        else if (empty($tenNCC)) {
-            $error = 'Vui lòng nhập tên nhà cung cấp';
+        else if (empty($maNCC)) {
+            $error = 'Vui lòng nhập mã nhà cung cấp';
         }
-        else if (empty($tenXe)) {
-            $error = 'Vui lòng nhập tên xe';
+        else if (empty($maxe)) {
+            $error = 'Vui lòng nhập mã xe';
         }
         else if (empty($soLuongXe)) {
             $error = 'Vui lòng nhập số lượng xe';
@@ -80,7 +80,7 @@
         }
         else {
             if (isset($_GET['maDH'])) {
-                $result = $banhang_controller->update_order($_GET['maDH'], $ngayxuatDH, $tenNCC, $tenXe, $soLuongXe, $dongia, $thue);
+                $result = $banhang_controller->update_order($_GET['maDH'], $ngayxuatDH, $maNCC, $maxe, $soLuongXe, $dongia, $thue);
                 if ($result === 0) {
                     echo "<script type='text/javascript'>
                     alert('Cập nhật thành công');
@@ -92,13 +92,13 @@
                 }
             }
             else {
-                $result = $banhang_controller->add_new_order($ngayxuatDH, $tenNCC, $tenXe, $soLuongXe, $dongia, $thue, $_SESSION['username']);
+                $result = $banhang_controller->add_new_order($ngayxuatDH, $maNCC, $maxe, $soLuongXe, $dongia, $thue, $_SESSION['username']);
 
                 if ($result != null) {
                     $error = 'Thêm đơn hàng thành công';
                     $ngayxuatDH = '';
-                    $tenNCC = '';
-                    $tenXe = '';
+                    $maNCC = '';
+                    $maxe = '';
                     $soLuongXe = '';
                     $dongia = '';
                     $thue = '';
@@ -124,13 +124,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="subject">Tên nhà cung cấp</label>
-                    <input value="<?= $tenNCC ?>" name="tenNCC" required class="form-control" type="text" placeholder="Tên nhà cung cấp">
+                    <label for="subject">Mã nhà cung cấp</label>
+                    <input value="<?= $maNCC ?>" name="maNCC" required class="form-control" type="text" placeholder="Mã nhà cung cấp">
                 </div>
 
                 <div class="form-group">
-                    <label for="room">Tên xe</label>
-                    <input value="<?= $tenXe ?>" name="tenXe" required class="form-control" type="text" placeholder="Tên xe">
+                    <label for="room">Mã xe</label>
+                    <input value="<?= $maxe ?>" name="maxe" required class="form-control" type="text" placeholder="Mã xe">
                 </div>
 
                 <div class="form-group">
@@ -154,7 +154,7 @@
                             echo "<div class='alert alert-danger'>$error</div>";
                         }
                     ?>
-                    <button type="submit" class="btn btn-primary px-5 mr-2"><?php if (isset($_GET['maDH'])) { echo 'Sửa'; } else { echo 'Thêm'; } ?></button>
+                    <button type="submit" class="btn btn-primary px-5 mr-2">Lưu</button>
                 </div>
             </form>
 

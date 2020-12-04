@@ -25,11 +25,11 @@
                 case "Ngày xuất":
                     $result = $banhang_controller->search_ngayxuatDH($search_value);
                     break;
-                case "Nhà cung cấp":
-                    $result = $banhang_controller->search_tenNCC($search_value);
+                case "Mã nhà cung cấp":
+                    $result = $banhang_controller->search_maNCC_donhang_model($search_value);
                     break;
-                case "Tên xe":
-                    $result = $banhang_controller->search_tenXe($search_value);
+                case "Mã xe":
+                    $result = $banhang_controller->search_maxe_donhang_model($search_value);
                     break;
                 case "Số lượng xe":
                     $result = $banhang_controller->search_soLuongXe($search_value);
@@ -42,7 +42,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Danh sách lớp</title>
+    <title>Danh sách đơn hàng</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -89,8 +89,8 @@
                             <select class="form-control" name="select_value">
                                 <option value="Mã đơn hàng">Theo Mã đơn hàng</option>
                                 <option value="Ngày xuất">Theo Ngày xuất (Định dạng: dd/mm/yyyy)</option>
-                                <option value="Nhà cung cấp">Theo Nhà cung cấp</option>
-                                <option value="Tên xe">Theo Tên xe</option>
+                                <option value="Mã nhà cung cấp">Theo Mã nhà cung cấp</option>
+                                <option value="Mã xe">Theo Mã xe</option>
                                 <option value="Số lượng xe">Theo Số lượng xe</option>
                             </select>
                         </td>
@@ -120,8 +120,8 @@
         <tr class="header">
             <td>Mã đơn hàng</td>
             <td>Ngày xuất đơn hàng</td>
-            <td>Nhà cung cấp</td>
-            <td>Tên Xe</td>
+            <td>Mã nhà cung cấp</td>
+            <td>Mã xe</td>
             <td>Số lượng</td>
             <td>Đơn giá (VND)</td>
             <td>Thuế</td>
@@ -131,8 +131,8 @@
         $data = $result;
         $maDH = '';
         $ngayxuatDH = '';
-        $tenNCC = '';
-        $tenXe = '';
+        $maNCC = '';
+        $maxe = '';
         $soLuongXe = '';
         $dongia = '';
         $thue = '';
@@ -142,8 +142,8 @@
         foreach ($data as $row) {
             $maDH = $row['maDH'];
             $ngayxuatDH = $row['ngayxuatDH'];
-            $tenNCC = $row['tenNCC'];
-            $tenXe = $row['tenXe'];
+            $maNCC = $row['maNCC'];
+            $maxe = $row['maxe'];
             $soLuongXe = $row['soLuongXe'];
             $dongia = $row['dongia'];
             $thue = $row['thue'];
@@ -151,8 +151,8 @@
             <tr class="item">
                 <td><?= $maDH; ?></td>
                 <td><?= $ngayxuatDH; ?></td>
-                <td><?= $tenNCC; ?></td>
-                <td><?= $tenXe; ?></td>
+                <td><?= $maNCC; ?></td>
+                <td><?= $maxe; ?></td>
                 <td><?= $soLuongXe; ?></td>
                 <td><?= $dongia; ?></td>
                 <td><?= $thue; ?></td>

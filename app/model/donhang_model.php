@@ -42,12 +42,12 @@ class donhang_model
         return null;
     }
 
-    public static function add_new_order($ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue, $id) {
-        $sql = 'insert into donhang(ngayxuatDH, tenNCC, tenXe, soluongXe, dongia, thue, id) values(?, ?, ?, ?, ?, ?, ?)';
+    public static function add_new_order($ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $id) {
+        $sql = 'insert into donhang(ngayxuatDH, maNCC, maxe, soluongXe, dongia, thue, id) values(?, ?, ?, ?, ?, ?, ?)';
         $db = DB::getDB();
 
         $stm = $db->prepare($sql);
-        $stm->bind_param('sssssss', $ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue, $id);
+        $stm->bind_param('sssssss', $ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $id);
         $status = $stm->execute();
 
         if ($status) {
@@ -57,12 +57,12 @@ class donhang_model
         return null;
     }
 
-    public static function update_order($maDH, $ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue) {
-        $sql = 'update donhang set ngayxuatDH = ?, tenNCC = ?, tenXe = ?, soluongXe = ?, dongia = ?, thue = ? where maDH = ?';
+    public static function update_order($maDH, $ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue) {
+        $sql = 'update donhang set ngayxuatDH = ?, maNCC = ?, maxe = ?, soluongXe = ?, dongia = ?, thue = ? where maDH = ?';
         $db = DB::getDB();
 
         $stm = $db->prepare($sql);
-        $stm->bind_param('ssssssi', $ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue, $maDH);
+        $stm->bind_param('ssssssi', $ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $maDH);
         $status = $stm->execute();
 
         if ($status) {
@@ -91,11 +91,11 @@ class donhang_model
         return null;
     }
 
-    public static function search_tenNCC($tenNCC) {
-        $sql = "select * from donhang where tenNCC like concat('%', ?, '%')";
+    public static function search_maNCC($maNCC) {
+        $sql = "select * from donhang where maNCC like concat('%', ?, '%')";
         $db = DB::getDB();
         $stm = $db->prepare($sql);
-        $stm->bind_param('s', $tenNCC);
+        $stm->bind_param('s', $maNCC);
 
         $status = $stm->execute();
         if ($status) {
@@ -110,11 +110,11 @@ class donhang_model
         return null;
     }
 
-    public static function search_tenXe($tenXe) {
-        $sql = "select * from donhang where tenXe like concat('%', ?, '%')";
+    public static function search_maxe($maxe) {
+        $sql = "select * from donhang where maxe like concat('%', ?, '%')";
         $db = DB::getDB();
         $stm = $db->prepare($sql);
-        $stm->bind_param('s', $tenXe);
+        $stm->bind_param('s', $maxe);
 
         $status = $stm->execute();
         if ($status) {

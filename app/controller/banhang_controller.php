@@ -47,12 +47,12 @@ class banhang_controller extends base_controller
         return donhang_model::search_ngayxuatDH($ngayxuatDH);
     }
 
-    public function search_tenNCC($tenNCC) {
-        return donhang_model::search_tenNCC($tenNCC);
+    public function search_maNCC_donhang_model($maNCC) {
+        return donhang_model::search_maNCC($maNCC);
     }
 
-    public function search_tenXe($tenXe) {
-        return donhang_model::search_tenXe($tenXe);
+    public function search_maxe_donhang_model($maxe) {
+        return donhang_model::search_maxe($maxe);
     }
 
     public function search_soLuongXe($soLuongXe) {
