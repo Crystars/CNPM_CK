@@ -61,6 +61,7 @@ if (isset($_POST['id_delete'])){
         </tr>
 
         <tr class="header">
+            <td>ID</td>
             <td>Họ và tên</td>
             <td>Giới tính</td>
             <td>Ngày sinh</td>

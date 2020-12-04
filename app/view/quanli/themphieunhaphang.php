@@ -51,15 +51,15 @@ if (isset($_GET['data'])){
     redirect('index.php?controller=login&action=logout');
 }
 if (isset($_POST['maPhieuNH']) && isset($_POST['ngayNhap']) && isset($_POST['nvLap'])
-    && isset($_POST['soluong']) && isset($_POST['dongia']) &&isset($_POST['thue']) &&
-    isset($_POST['action']) ) {
+    && isset($_POST['soluong']) && isset($_POST['dongia']) && isset($_POST['thue']) &&
+    isset($_POST['maNCC']) && isset($_POST['maxe']) && isset($_POST['action']) ) {
     $action = $_POST['action'];
     $maPhieuNH = $_POST['maPhieuNH'];
     $ngayNhap = $_POST['ngayNhap'];
     $nvLap = $_POST['nvLap'];
-    $maNCC = $_POST['soluong'];
-    $maxe = $_POST['dongia'];
-    $soluong = $_POST['thue'];
+    $maNCC = $_POST['maNCC'];
+    $maxe = $_POST['maxe'];
+    $soluong = $_POST['soluong'];
     $dongia = $_POST['dongia'];
     $thue = $_POST['thue'];
 
@@ -70,7 +70,7 @@ if (isset($_POST['maPhieuNH']) && isset($_POST['ngayNhap']) && isset($_POST['nvL
     } else if (empty($maNCC)) {
         $error = 'Bạn chưa nhập mã nhà cung cấp';
     } else if (empty($maxe)) {
-    $error = 'Bạn chưa nhập mã xe';
+        $error = 'Bạn chưa nhập mã xe';
     } else if (empty($soluong)) {
         $error = 'Bạn chưa nhập số lượng';
     }else if (empty($dongia)) {

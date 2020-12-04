@@ -52,13 +52,13 @@ if (isset($_GET['data'])){
 }
 if (isset($_POST['maPhieuNH']) && isset($_POST['ngayNhap']) && isset($_POST['nvLap'])
     && isset($_POST['soluong']) && isset($_POST['dongia']) &&isset($_POST['thue']) &&
-    isset($_POST['action']) ) {
+    isset($_POST['maNCC']) && isset($_POST['maxe']) && isset($_POST['action']) ) {
     $action = $_POST['action'];
     $maPhieuNH = $_POST['maPhieuNH'];
     $ngayNhap = $_POST['ngayNhap'];
     $nvLap = $_POST['nvLap'];
-    $maNCC = $_POST['soluong'];
-    $maxe = $_POST['dongia'];
+    $maNCC = $_POST['maNCC'];
+    $maxe = $_POST['maxe'];
     $soluong = $_POST['thue'];
     $dongia = $_POST['dongia'];
     $thue = $_POST['thue'];
