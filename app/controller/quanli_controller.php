@@ -8,7 +8,43 @@ class quanli_controller extends base_controller
     }
 
     public function index() {
-        $this->process('thuchi',array());
+        $this->process('nhanvien',array());
+    }
+    public function them_user($id) {
+        $this->process('themnhanvien',array($id));
+    }
+
+    public function thongtinxe() {
+        $this->process('thongtinxe',array());
+    }
+
+    public function them_thongtinxe($id) {
+        $this->process('themthongtinxe',array($id));
+    }
+
+    public function nhacungcap() {
+        $this->process('nhacungcap',array());
+    }
+
+    public function them_nhacungcap($id) {
+        $this->process('themnhacungcap',array($id));
+    }
+
+
+    public function banhang() {
+        $this->process('banhang',array());
+    }
+
+    public function them_banhang($id) {
+        $this->process('thembanhang',array($id));
+    }
+
+    public function kho() {
+        $this->process('phieunhaphang',array());
+    }
+
+    public function them_kho($id) {
+        $this->process('themphieunhaphang',array($id));
     }
 
     public function thuchi() {
@@ -57,43 +93,6 @@ class quanli_controller extends base_controller
             $soLuongXeTon, $tongTienNhap, $tongTienBan);
     }
 
-
-    public function them_user($id) {
-        $this->process('themnhanvien',array($id));
-    }
-
-    public function thongtinxe() {
-        $this->process('thongtinxe',array());
-    }
-
-    public function them_thongtinxe($id) {
-        $this->process('themthongtinxe',array($id));
-    }
-
-    public function nhacungcap() {
-        $this->process('nhacungcap',array());
-    }
-
-    public function them_nhacungcap($id) {
-        $this->process('themnhacungcap',array($id));
-    }
-
-
-    public function banhang() {
-        $this->process('banhang',array());
-    }
-
-    public function them_banhang($id) {
-        $this->process('thembanhang',array($id));
-    }
-
-    public function kho() {
-        $this->process('phieunhaphang',array());
-    }
-
-    public function them_kho($id) {
-        $this->process('themphieunhaphang',array($id));
-    }
 
     public static function get_all_users() {
         return user_model::get_all_users();
