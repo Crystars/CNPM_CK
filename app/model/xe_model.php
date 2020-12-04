@@ -139,7 +139,7 @@ class xe_model
     }
 
     public static function get_sum_soluongkho() {
-        $sql = 'select sum(soluongkho) as soLuongXeTon from xe';
+        $sql = 'select sum(soluongkho) as soLuongXeTon from xe where state = 1';
         $db = DB::getDB();
 
         $stm = $db->prepare($sql);

@@ -203,7 +203,7 @@ if (isset($_POST['maPhieuNH']) && isset($_POST['ngayNhap']) && isset($_POST['nvL
                 <div class="form-group">
                     <label for="thue">Nhập thuế</label>
                     <input value="<?=$thue ?>" name="thue" required class="form-control"
-                           type="number" placeholder="Thuế" id="thue"
+                           type="text" placeholder="Thuế" id="thue"
                            oninvalid="this.setCustomValidity('Vui lòng nhập thuế')"
                            oninput="setCustomValidity('')"
                     >

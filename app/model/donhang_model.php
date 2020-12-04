@@ -91,6 +91,7 @@ class donhang_model
         $status = $stm->execute();
 
         if ($status) {
+            xe_model::update_xe_soluongkho($maxe,-$soluongXe);
             return $db->insert_id;
         }
         $stm->close();

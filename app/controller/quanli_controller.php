@@ -32,11 +32,12 @@ class quanli_controller extends base_controller
 
 
     public function banhang() {
-        $this->process('banhang',array());
+        $this->process('list_order',array());
     }
 
-    public function them_banhang($id) {
-        $this->process('thembanhang',array($id));
+
+    public function add_order() {
+        $this->process('add_order',array());
     }
 
     public function kho() {

@@ -23,7 +23,7 @@ if (isset($_GET['data'])){
 
     if ($_GET['data']!= -1){
         $id = $_GET['data'];
-        $nhacungcap = quanli_controller::get_nhacungcap_by_id($_GET['data']);
+        $nhacungcap = kho_controller::get_nhacungcap_by_id($_GET['data']);
         $maNCC = $nhacungcap['maNCC'];
         $tenNCC = $nhacungcap['tenNCC'];
         $sdt = $nhacungcap['sdt'];
@@ -53,14 +53,14 @@ if (isset($_POST['maNCC']) && isset($_POST['tenNCC']) && isset($_POST['phone'])
         $error = 'Bạn chưa nhập địa chỉ';
     } else {
         if ($action === "Thêm") {
-            $result = quanli_controller::add_nhacungcap($maNCC,$tenNCC,$sdt,$diachi);
+            $result = kho_controller::add_nhacungcap($maNCC,$tenNCC,$sdt,$diachi);
             if ($result === 0) {
                 $success = 'Thêm thành công';
             } else {
                 $error = 'Thêm không thành công';
             }
         } else {
-            $result = quanli_controller::update_nhacungcap($maNCC, $tenNCC, $sdt, $diachi);
+            $result = kho_controller::update_nhacungcap($maNCC, $tenNCC, $sdt, $diachi);
             if ($result == 0) {
                 $success = 'Sửa thành công';
             } else {
