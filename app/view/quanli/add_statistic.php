@@ -1,7 +1,6 @@
 <?php
-    require_once 'config/config.php';
-    require_once 'app/controller/banhang_controller.php';
-    $banhang_controller = new banhang_controller();
+    require_once 'app/controller/quanli_controller.php';
+    $quanli_controller = new quanli_controller();
 
     if (isset($_SESSION['username'])) {
         /*$result = $banhang_controller->check_permission($_SESSION['username']);
@@ -9,7 +8,6 @@
             header('Location: /index.php');
         }*/
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +30,18 @@
 <?php
 
     $error = '';
-    $ngayxuatDH = '';
-    $maNCC = '';
-    $maxe = '';
-    $soLuongXe = '';
-    $dongia = '';
-    $thue = '';
+    $loaiTK = '';
+    $thoigianLap = '';
+    $thoigianSua = '';
+    $soLuongXeNhap = '';
+    $soLuongXeBan = '';
+    $soLuongXeTon = '';
+    $tongTienNhap = '';
+    $tongTienBan = '';
 
-    if (isset($_GET['maDH'])) {
-        $maDH = $_GET['maDH'];
-        $data = $banhang_controller->get_order_by_maDH($maDH);
+    if (isset($_GET['maTK'])) {
+        $maTK = $_GET['maTK'];
+        /*$data = $banhang_controller->get_order_by_maDH($maDH);
         foreach ($data as $row) {
             $ngayxuatDH = $row['ngayxuatDH'];
             $maNCC = $row['maNCC'];
@@ -49,14 +49,15 @@
             $soLuongXe = $row['soLuongXe'];
             $dongia = $row['dongia'];
             $thue = $row['thue'];
-        }
+        }*/
     }
 
-    if (isset($_POST['ngayxuatDH']) && isset($_POST['maNCC']) && isset($_POST['maxe']) && isset($_POST['soLuongXe']) && isset($_POST['dongia']) && isset($_POST['thue']))
+    if (isset($_POST['loaiTK']) && isset($_POST['thoigianLap']) && isset($_POST['thoigianSua']) && isset($_POST['soLuongXeNhap'])
+        && isset($_POST['dongia']) && isset($_POST['thue']))
     {
         $ngayxuatDH = $_POST['ngayxuatDH'];
         $maNCC = $_POST['maNCC'];
-        $maxe = explode('/', $_POST['maxe'])[0];
+        $maxe = $_POST['maxe'];
         $soLuongXe = $_POST['soLuongXe'];
         $dongia = $_POST['dongia'];
         $thue = $_POST['thue'];
@@ -64,17 +65,17 @@
         if (empty($ngayxuatDH)) {
             $error = 'Vui lòng nhập ngày xuất';
         }
-        else if (empty($maxe)) {
-            $error = 'Vui lòng nhập mã xe';
-        }
         else if (empty($maNCC)) {
             $error = 'Vui lòng nhập mã nhà cung cấp';
         }
-        else if (empty($dongia)) {
-            $error = 'Vui lòng nhập đơn giá';
+        else if (empty($maxe)) {
+            $error = 'Vui lòng nhập mã xe';
         }
         else if (empty($soLuongXe)) {
             $error = 'Vui lòng nhập số lượng xe';
+        }
+        else if (empty($dongia)) {
+            $error = 'Vui lòng nhập đơn giá';
         }
         else if (empty($thue)) {
             $error = 'Vui lòng nhập thuế';
@@ -84,9 +85,9 @@
                 $result = $banhang_controller->update_order($_GET['maDH'], $ngayxuatDH, $maNCC, $maxe, $soLuongXe, $dongia, $thue);
                 if ($result === 0) {
                     echo "<script type='text/javascript'>
-                    alert('Cập nhật thành công');
-                    window.location.replace('/index.php?controller=banhang&action=index');
-                    </script>";
+                        alert('Cập nhật thành công');
+                        window.location.replace('/index.php?controller=quanli&action=thuchi');
+                        </script>";
                 }
                 else {
                     $error = 'Cập nhật thất bại! Vui lòng thử lại sau';
@@ -120,53 +121,40 @@
             <form method="post" action="" novalidate enctype="multipart/form-data">
 
                 <div class="form-group">
-                    <label for="ngayxuatDH">Ngày xuất hoá đơn</label>
-                    <input value="<?php if (isset($_GET['maDH'])) {echo $ngayxuatDH;} else {echo date('d/m/Y', time());} ?>" name="ngayxuatDH" id="ngayxuatDH" required class="form-control" type="text" placeholder="Ngày xuất">
+                    <label for="classname">Ngày xuất hoá đơn (Định dạng: dd/mm/yyyy)</label>
+                    <input value="<?= $ngayxuatDH ?>" name="ngayxuatDH" required class="form-control" type="text" placeholder="Ngày xuất">
                 </div>
 
                 <div class="form-group">
-                    <label for="maxe">Mã xe</label>
-                    <select class="form-control" name="maxe" id="maxe" onchange="get_value_by_maxe(this)">
-                        <option value=""> --Chọn mã xe-- </option>
-                        <?php
-                            $data = $banhang_controller->get_all_cars();
-                            $maxe = '';
-                            foreach ($data as $row) {
-                                $maxe = $row['maxe'];
-                                ?>
-
-                                <option value='<?= $maxe ?>/ <?= $row["maNCC"] ?>/ <?= $row["dongia"] ?>'><?= $maxe ?></option>
-                                <?php
-                            }
-                        ?>
-                    </select>
+                    <label for="subject">Mã nhà cung cấp</label>
+                    <input value="<?= $maNCC ?>" name="maNCC" required class="form-control" type="text" placeholder="Mã nhà cung cấp">
                 </div>
 
                 <div class="form-group">
-                    <label for="maNCC">Mã nhà cung cấp</label>
-                    <input value="<?= $maNCC ?>" name="maNCC" id="maNCC" required class="form-control" type="text" placeholder="Mã nhà cung cấp">
+                    <label for="room">Mã xe</label>
+                    <input value="<?= $maxe ?>" name="maxe" required class="form-control" type="text" placeholder="Mã xe">
                 </div>
 
                 <div class="form-group">
-                    <label for="dongia">Đơn giá</label>
-                    <input value="<?= $dongia ?>" name="dongia" id="dongia" required class="form-control" type="text" placeholder="Đơn giá">
+                    <label for="room">Số lượng xe</label>
+                    <input value="<?= $soLuongXe ?>" name="soLuongXe" required class="form-control" type="text" placeholder="Số lượng xe">
                 </div>
 
                 <div class="form-group">
-                    <label for="soLuongXe">Số lượng xe</label>
-                    <input value="<?= $soLuongXe ?>" name="soLuongXe" id="soLuongXe" required class="form-control" type="text" placeholder="Số lượng xe">
+                    <label for="room">Đơn giá</label>
+                    <input value="<?= $dongia ?>" name="dongia" required class="form-control" type="text" placeholder="Đơn giá">
                 </div>
 
                 <div class="form-group">
-                    <label for="thue">Thuế</label>
-                    <input value="<?= $thue ?>" name="thue" id="thue" required class="form-control" type="text" placeholder="Thuế">
+                    <label for="room">Thuế</label>
+                    <input value="<?= $thue ?>" name="thue" required class="form-control" type="text" placeholder="Thuế">
                 </div>
 
                 <div class="form-group">
                     <?php
-                        if (!empty($error)) {
-                            echo "<div class='alert alert-danger'>$error</div>";
-                        }
+                    if (!empty($error)) {
+                        echo "<div class='alert alert-danger'>$error</div>";
+                    }
                     ?>
                     <button type="submit" class="btn btn-primary px-5 mr-2">Lưu</button>
                 </div>

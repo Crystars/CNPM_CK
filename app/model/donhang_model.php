@@ -42,6 +42,46 @@ class donhang_model
         return null;
     }
 
+    public static function get_order_by_month($ngayxuatDH) {
+        $sql = 'select * from donhang where MONTH(ngayxuatDH) = ?';
+        $db = DB::getDB();
+
+        $stm = $db->prepare($sql);
+        $stm->bind_param('s', $ngayxuatDH);
+        $status = $stm->execute();
+
+        if ($status) {
+            $result = $stm->get_result();
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            return $data;
+        }
+        $stm->close();
+        return null;
+    }
+
+    public static function get_order_by_year($ngayxuatDH) {
+        $sql = 'select * from donhang where YEAR(ngayxuatDH) = ?';
+        $db = DB::getDB();
+
+        $stm = $db->prepare($sql);
+        $stm->bind_param('s', $ngayxuatDH);
+        $status = $stm->execute();
+
+        if ($status) {
+            $result = $stm->get_result();
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            return $data;
+        }
+        $stm->close();
+        return null;
+    }
+
     public static function add_new_order($ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $id) {
         $sql = 'insert into donhang(ngayxuatDH, maNCC, maxe, soluongXe, dongia, thue, id) values(?, ?, ?, ?, ?, ?, ?)';
         $db = DB::getDB();

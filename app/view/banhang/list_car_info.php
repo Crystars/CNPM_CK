@@ -107,7 +107,6 @@
             <td>Mã nhà cung cấp</td>
             <td>Số lượng kho</td>
             <td>Đơn giá (VND)</td>
-            <td>Hình ảnh xe</td>
         </tr>
         <?php
         $data = $result;
@@ -118,19 +117,25 @@
         $maNCC = '';
         $soluongkho = '';
         $dongia = '';
-        $image = '';
 
         $total = count($data);
 
         foreach ($data as $row) {
-            $maxe = $row['maxe'];
-            $tenxe = $row['tenxe'];
-            $mota = $row['mota'];
-            $baohanh = $row['baohanh'];
-            $maNCC = $row['maNCC'];
-            $soluongkho = $row['soluongkho'];
-            $dongia = $row['dongia'];
-            $image = $row['image'];
+            $state = $row['state'];
+            if ($state === 0) {
+                continue;
+            }
+            else {
+                $maxe = $row['maxe'];
+                $tenxe = $row['tenxe'];
+                $mota = $row['mota'];
+                $baohanh = $row['baohanh'];
+                $maNCC = $row['maNCC'];
+                $soluongkho = $row['soluongkho'];
+                $dongia = $row['dongia'];
+            }
+
+
             ?>
             <tr class="item">
                 <td><?= $maxe; ?></td>
@@ -140,13 +145,12 @@
                 <td><?= $maNCC; ?></td>
                 <td><?= $soluongkho; ?></td>
                 <td><?= $dongia; ?></td>
-                <td class="responsive_image" style="background-image: url('/images/xe/<?= $image ?>')"></td>
             </tr>
             <?php
         }
         ?>
         <tr class="control">
-            <td colspan="8">
+            <td colspan="7">
                 <p>Tổng số mẫu xe: <?= $total; ?></p>
             </td>
         </tr>

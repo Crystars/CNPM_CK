@@ -42,6 +42,25 @@ class xe_model
         return null;
     }
 
+    public static function get_sum_soluongkho() {
+        $sql = 'select sum(soluongkho) as soLuongXeTon from xe';
+        $db = DB::getDB();
+
+        $stm = $db->prepare($sql);
+        $status = $stm->execute();
+
+        if ($status) {
+            $result = $stm->get_result();
+            $data = array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($data, $row);
+            }
+            return $data;
+        }
+        $stm->close();
+        return null;
+    }
+
     public static function search_maNCC($maNCC) {
         $sql = "select * from xe where maNCC like concat('%', ?, '%')";
         $db = DB::getDB();
