@@ -88,7 +88,7 @@
                         <td style="width: 50px">
                             <select class="form-control" name="select_value">
                                 <option value="Mã đơn hàng">Theo Mã đơn hàng</option>
-                                <option value="Ngày xuất">Theo Ngày xuất (Định dạng: dd/mm/yyyy)</option>
+                                <option value="Ngày xuất">Theo Ngày xuất (Định dạng: yyyy-mm-dd)</option>
                                 <option value="Mã nhà cung cấp">Theo Mã nhà cung cấp</option>
                                 <option value="Mã xe">Theo Mã xe</option>
                                 <option value="Số lượng xe">Theo Số lượng xe</option>

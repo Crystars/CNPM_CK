@@ -46,7 +46,7 @@ class xe_model
 
     public static function get_xe_by_id($maxe)
     {
-        $sql = "SELECT * FROM xe WHERE maxe = ? and state =1";
+        $sql = "SELECT * FROM xe WHERE maxe = ? and state = 1";
         $db = DB::getDB();
         $stm = $db->prepare($sql);
         $stm->bind_param('s', $maxe);

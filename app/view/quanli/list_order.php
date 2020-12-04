@@ -55,17 +55,24 @@
     <script src="/main.js"></script>
 </head>
 
+<style>
+    #quanli_page {
+        font-size: x-large;
+        color: black;
+    }
+</style>
+
 <body>
 
 <nav id="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=index">Quản lí nhân viên</a></li>
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=banhang">Quản lí bán hàng</a></li>
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=nhacungcap">Quản lí nhà cung cấp</a></li>
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=thongtinxe">Quản lí thông tin xe</a></li>
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=thuchi">Quản lí thu chi</a></li>
-            <li><a class="x-large"  href="/index.php?controller=quanli&action=kho">Quản lí kho</a></li>
+            <li><a id="quanli_page" href="/index.php?controller=quanli&action=index" style="color: rosybrown">Quản lí nhân viên</a></li>
+            <li><a id="quanli_page"  href="/index.php?controller=quanli&action=banhang" >Quản lí bán hàng</a></li>
+            <li><a id="quanli_page"  href="/index.php?controller=quanli&action=nhacungcap" style="color: rosybrown">Quản lí nhà cung cấp</a></li>
+            <li><a id="quanli_page"  href="/index.php?controller=quanli&action=thongtinxe" style="color: rosybrown">Quản lí thông tin xe</a></li>
+            <li><a id="quanli_page"  href="/index.php?controller=quanli&action=thuchi" style="color: rosybrown">Quản lí thu chi</a></li>
+            <li><a id="quanli_page"  href="/index.php?controller=quanli&action=kho" style="color: rosybrown">Quản lí kho</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

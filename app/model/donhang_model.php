@@ -103,7 +103,7 @@ class donhang_model
         $db = DB::getDB();
 
         $stm = $db->prepare($sql);
-        $stm->bind_param('ssssssi', $ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $maDH);
+        $stm->bind_param('sssissi', $ngayxuatDH, $maNCC, $maxe, $soluongXe, $dongia, $thue, $maDH);
         $status = $stm->execute();
 
         if ($status) {

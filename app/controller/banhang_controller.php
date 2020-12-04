@@ -19,9 +19,6 @@ class banhang_controller extends base_controller
         $this->process('add_order', array());
     }
 
-    public function detail_car_info() {
-        $this->process('detail_car_info', array());
-    }
 
     public function get_all_orders() {
         return donhang_model::get_all_orders();
@@ -41,6 +38,10 @@ class banhang_controller extends base_controller
 
     public function update_order($maDH, $ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue) {
         return donhang_model::update_order($maDH, $ngayxuatDH, $tenNCC, $tenXe, $soluongXe, $dongia, $thue);
+    }
+
+    public function update_xe_soluongkho($maxe, $soluongkho) {
+        return xe_model::update_xe_soluongkho($maxe, $soluongkho);
     }
 
     public function search_ngayxuatDH($ngayxuatDH) {
