@@ -32,8 +32,11 @@ if (isset($_POST['id_delete'])){
 <nav id="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
         <ul class="nav navbar-nav">
-            <li><a class="x-large"  href="/index.php?controller=kho&action=nhacungcap">Quản lí nhà cung cấp</a></li>
-            <li><a class="x-large"  href="/index.php?controller=kho&action=kho">Quản lí kho</a></li>
+            <ul class="nav navbar-nav">
+                <li style="font-weight: bold">Quản lí kho</li>
+            </ul>
+            <li><a href="/index.php?controller=kho&action=nhacungcap" style="color: black; font-size: xx-large">Quản lí nhà cung cấp</a></li>
+            <li><a href="/index.php?controller=kho&action=kho" style="color: rosybrown; font-size: xx-large">Quản lí kho</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

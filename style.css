@@ -3,9 +3,7 @@
 }
 
 .main_background {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: url("/images/main_background.jpg");
 }
 
 .sua_lop_hoc {
@@ -37,7 +35,6 @@
     background: bisque;
     border-bottom: 2px solid cyan;
 }
-
 
 #classroom {
     font-size: xx-large;
@@ -430,9 +427,6 @@ tr.header{
     color: black;
 }
 
-.main_background{
-    background-color: aquamarine;
-}
 .disabled {
     pointer-events: none;
     cursor: default;

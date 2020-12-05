@@ -111,19 +111,22 @@ if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['gioitinh'])
     <title><?= $action ?> nhân viên</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body class="main_background">
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 col-md-8 border my-5 p-4 rounded mx-3">
+        <div class="col-xl-5 col-lg-6 col-md-8 border rounded my-5 p-4 mx-3 sua_lop_hoc">
             <h3 class="text-center text-secondary mt-2 mb-3 mb-3"><?= $action ?> nhân viên</h3>
-            <form method="post" action="" >
+            <form method="post" action="">
                 <div class="form-group ">
                     <label for="name">Họ và Tên</label>
                     <input value="<?= $name?>" name="name" required class="form-control" type="text"
@@ -220,14 +223,14 @@ if (isset($_POST['id']) && isset($_POST['name']) && isset($_POST['gioitinh'])
                     ?>
                     <button type="submit" class="btn btn-success  mt-3 mr-2"><?= $action ?></button>
                     <button type="reset" class="btn btn-outline-success  mt-3">Reset</button>
-                    <a class="btn btn-info" class="xx-large"  href="/index.php?controller=quanli&action=index">Quản lí nhân viên</a>
+                    <a class="btn btn-info mt-3" style="margin-left: 8px"  href="/index.php?controller=quanli&action=index">Quản lí nhân viên</a>
                 </div>
             </form>
 
         </div>
     </div>
-
 </div>
+
 </body>
 </html>
 

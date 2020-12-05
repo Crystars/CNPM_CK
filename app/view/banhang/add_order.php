@@ -122,7 +122,7 @@ if (isset($_POST['ngayxuatDH']) && isset($_POST['maNCC']) && isset($_POST['maxe'
 ?>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-xl-5 col-lg-6 col-md-8 border rounded my-5 p-4  mx-3 sua_lop_hoc">
+        <div class="col-xl-5 col-lg-6 col-md-8 border rounded my-5 p-4 mx-3 sua_lop_hoc">
             <p class="mb-5"><a href="/index.php?controller=banhang&action=index">Quay lại</a></p>
             <h3 class="text-center text-secondary mt-2 mb-3 mb-3"><?php if (isset($_GET['maDH'])) { echo 'Sửa đơn hàng'; } else { echo 'Thêm đơn hàng mới'; } ?></h3>
             <form method="post" id="myAddForm" novalidate enctype="multipart/form-data">

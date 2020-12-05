@@ -128,7 +128,8 @@ class xe_model
         if ($stm === False){
             return array('code' => 4, 'error' => 'something wrong');
         }
-        $stm->bind_param('sssssiii',$maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $state);
+        $dongia = number_format($dongia);
+        $stm->bind_param('sssssisi',$maxe, $tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $state);
         $status = $stm->execute();
 
         if($status) {
@@ -164,7 +165,8 @@ class xe_model
         if ($stm === False){
             return array('code' => 4, 'error' => 'something wrong');
         }
-        $stm->bind_param('sssssis',$tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $maxe);
+
+        $stm->bind_param('ssssiss',$tenxe, $mota, $baohanh, $maNCC, $soluongkho, $dongia, $maxe);
         $status = $stm->execute();
         if($status) {
             return 0;

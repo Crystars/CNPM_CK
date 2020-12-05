@@ -28,7 +28,7 @@
 
                 foreach ($data as $row) {
                     $soluong = $row['soluong'];
-                    $dongia = str_replace('.', '', $row['dongia']);
+                    $dongia = str_replace(',', '', $row['dongia']);
                     $thue = str_replace('%', '', $row['thue']);
 
                     $soLuongXeNhap = $soLuongXeNhap + $soluong;
@@ -38,12 +38,13 @@
                 $data = $quanli_controller->get_order_by_month($currentMonth);
                 foreach ($data as $row) {
                     $soLuongXe = $row['soLuongXe'];
-                    $dongia = str_replace('.', '', $row['dongia']);
+                    $dongia = str_replace(',', '', $row['dongia']);
                     $thue = str_replace('%', '', $row['thue']);
 
                     $soLuongXeBan = $soLuongXeBan + $soLuongXe;
                     $tongTienBan = $tongTienBan + ((float)$dongia + (float)$dongia*((float)$thue/100.0))*$soLuongXe;
                 }
+
 
                 $data = $quanli_controller->get_sum_soluongkho();
                 foreach ($data as $row) {
@@ -58,7 +59,7 @@
                 $data = $quanli_controller->get_import_by_year($currentYear);
                 foreach ($data as $row) {
                     $soluong = $row['soluong'];
-                    $dongia = str_replace('.', '', $row['dongia']);
+                    $dongia = str_replace(',', '', $row['dongia']);
                     $thue = str_replace('%', '', $row['thue']);
 
                     $soLuongXeNhap = $soLuongXeNhap + $soluong;
@@ -81,10 +82,9 @@
                 }
                 break;
         }
-        $tongTienNhap = number_format($tongTienNhap);
-        $tongTienBan = number_format($tongTienBan);
+
         $result1 = $quanli_controller->add_new_statistic($loaiTK, $thoigianLap, $soLuongXeNhap, $soLuongXeBan,
-            $soLuongXeTon, strval($tongTienNhap), strval($tongTienBan));
+            $soLuongXeTon, $tongTienNhap, $tongTienBan);
         if ($result1 === 0) {
             echo "<script type='text/javascript'>
                         alert('Thêm thành công');

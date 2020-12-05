@@ -69,6 +69,8 @@ class thongke_model
         $db = DB::getDB();
 
         $stm = $db->prepare($sql);
+        $tongTienNhap = strval(number_format($tongTienNhap));
+        $tongTienBan = strval(number_format($tongTienBan));
         $stm->bind_param('ssiiiss', $loaiTK, $thoigianLap, $soLuongXeNhap, $soLuongXeBan,
                                             $soLuongXeTon, $tongTienNhap, $tongTienBan);
         $status = $stm->execute();
